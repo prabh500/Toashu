@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>I'm Sorry 💗</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+    }
+
+    body {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #ffe4ec, #fff5f8, #e8f4ff);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        color: #6b4050;
+    }
+
+    .card {
+        width: 90%;
+        max-width: 500px;
+        background: rgba(255,255,255,0.85);
+        padding: 40px 25px;
+        border-radius: 30px;
+        text-align: center;
+        box-shadow: 0 15px 40px rgba(150, 90, 110, 0.2);
+        position: relative;
+        z-index: 2;
+        animation: pop 0.8s ease;
+    }
+
+    @keyframes pop {
+        from {
+            transform: scale(0.8);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .emoji {
+        font-size: 70px;
+        margin-bottom: 15px;
+        animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    h1 {
+        font-size: 32px;
+        color: #e86a91;
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 17px;
+        line-height: 1.6;
+        margin-bottom: 25px;
+    }
+
+    .question {
+        font-size: 21px;
+        font-weight: bold;
+        margin: 20px 0;
+        color: #8b5064;
+    }
+
+    button {
+        border: none;
+        padding: 13px 28px;
+        margin: 8px;
+        border-radius: 30px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .yes {
+        background: #ff91b5;
+        color: white;
+        box-shadow: 0 5px 15px rgba(255,145,181,0.4);
+    }
+
+    .yes:hover {
+        transform: scale(1.08);
+        background: #ff719e;
+    }
+
+    .no {
+        background: #eee;
+        color: #777;
+        position: relative;
+    }
+
+    .message {
+        display: none;
+        animation: pop 0.6s ease;
+    }
+
+    .message h2 {
+        color: #e65c8a;
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+
+    .heart {
+        position: fixed;
+        bottom: -30px;
+        font-size: 25px;
+        animation: floatUp 5s linear infinite;
+        opacity: 0.7;
+        z-index: 1;
+    }
+
+    @keyframes floatUp {
+        from {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+
+        20% {
+            opacity: 1;
+        }
+
+        to {
+            transform: translateY(-110vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    .signature {
+        margin-top: 20px;
+        font-size: 18px;
+        color: #d95b83;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card" id="mainCard">
+
+    <div id="questionPage">
+
+        <div class="emoji">🥺</div>
+
+        <h1>I'm Really Sorry 💗</h1>
+
+        <p>
+            I know I may have hurt you, and honestly...
+            I feel really bad about it. 🥺
+        </p>
+
+        <div class="question">
+            Are you still mad at me? 👉👈
+        </div>
+
+        <button class="yes" onclick="nextQuestion()">
+            A little bit 😭
+        </button>
+
+        <button class="yes" onclick="nextQuestion()">
+            Not anymore 💕
+        </button>
+
+        <button class="no" id="noButton">
+            YES, VERY MAD 😤
+        </button>
+
+    </div>
+
+
+    <div class="message" id="sorryMessage">
+
+        <div class="emoji">🧸💗</div>
+
+        <h2>One More Question...</h2>
+
+        <p>
+            Do you think you could forgive me? 🥺
+        </p>
+
+        <button class="yes" onclick="forgive()">
+            Yes, I forgive you 💕
+        </button>
+
+        <button class="no" id="noButton2">
+            No 😤
+        </button>
+
+    </div>
+
+
+    <div class="message" id="finalMessage">
+
+        <div class="emoji">😭💖🫂</div>
+
+        <h2>YAYYY!! 🥹💕</h2>
+
+        <p>
+            Thank you for forgiving me! 🥺
+            <br><br>
+            I promise I'll try my best to make you smile
+            instead of making you upset. 💗
+            <br><br>
+            You mean a lot to me. 🫶🏻
+        </p>
+
+        <div class="signature">
+            I'm sorry, truly. 💌
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    function nextQuestion() {
+        document.getElementById("questionPage").style.display = "none";
+        document.getElementById("sorryMessage").style.display = "block";
+    }
+
+    function forgive() {
+        document.getElementById("sorryMessage").style.display = "none";
+        document.getElementById("finalMessage").style.display = "block";
+
+        createHearts();
+    }
+
+    // Make the NO button run away 😭
+    const noButton = document.getElementById("noButton");
+
+    noButton.addEventListener("mouseover", function() {
+        moveButton(noButton);
+    });
+
+    noButton.addEventListener("click", function() {
+        moveButton(noButton);
+    });
+
+
+    const noButton2 = document.getElementById("noButton2");
+
+    noButton2.addEventListener("mouseover", function() {
+        moveButton(noButton2);
+    });
+
+    noButton2.addEventListener("click", function() {
+        moveButton(noButton2);
+    });
+
+
+    function moveButton(button) {
+
+        const x = Math.random() * (window.innerWidth - 150);
+        const y = Math.random() * (window.innerHeight - 80);
+
+        button.style.position = "fixed";
+        button.style.left = x + "px";
+        button.style.top = y + "px";
+    }
+
+
+    function createHearts() {
+
+        const hearts = ["💗", "💕", "💖", "💘", "🩷", "💝", "🌸"];
+
+        for(let i = 0; i < 25; i++) {
+
+            const heart = document.createElement("div");
+
+            heart.classList.add("heart");
+
+            heart.innerHTML =
+                hearts[Math.floor(Math.random() * hearts.length)];
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+            heart.style.animationDuration =
+                (3 + Math.random() * 4) + "s";
+
+            heart.style.animationDelay =
+                Math.random() * 3 + "s";
+
+            document.body.appendChild(heart);
+        }
+    }
+
+</script>
+
+</body>
+</html>
+
